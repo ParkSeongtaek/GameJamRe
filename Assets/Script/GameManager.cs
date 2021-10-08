@@ -8,23 +8,23 @@ public class GameManager : MonoBehaviour
 
 
     //DB
-
-    int maxScore =0;
-    public void SetMaxScore(int score)
-    {
-        maxScore = score;
-    }
-    public int GetMaxScore()
-    {
-        return maxScore;
-    }
-
-    //Char state
     public bool inGame = true;
     public bool pause = false;
     public bool gameOver = false;
-
     public int Stage = 1;
+
+
+    public void SetMaxScore(int score)
+    {
+        Stage = score;
+    }
+    public int GetMaxScore()
+    {
+        return Stage;
+    }
+
+    //Char state
+    
 
 
     void Start()
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(Instance);
         }
-        maxScore = PlayerPrefs.GetInt("Stage",1);
+        Stage = PlayerPrefs.GetInt("Stage",1);
 
 
     }
