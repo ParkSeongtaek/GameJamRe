@@ -51,6 +51,8 @@ public class ForCharacterController : MonoBehaviour
     void Update()
     {
 
+
+
         if (timerStart)
         {
             timer += Time.deltaTime;
