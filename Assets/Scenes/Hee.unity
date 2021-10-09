@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f736281abb13849a8701718674b3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 624946345}
   groundCheck: {fileID: 1079878698}
   groundMask:
     serializedVersion: 2
@@ -643,6 +644,7 @@ MonoBehaviour:
   inGame: 1
   pause: 0
   gameOver: 0
+  gameClear: 0
   Stage: 1
 --- !u!4 &1264553447
 Transform:
