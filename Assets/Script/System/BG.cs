@@ -21,17 +21,21 @@ public class BG : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > time)
             {
-                MakeBG();
+                
                 timer = 0f;
-                if(idx< Prefnum)
+                if(idx < Prefnum)
                 {
                     idx++;
                 }
-                else
+                if(idx == 4)
                 {
-                    idx =0;
+                    idx = 0;
 
                 }
+
+
+                MakeBG();
+
             }
         }
     }
@@ -39,6 +43,7 @@ public class BG : MonoBehaviour
     void MakeBG()
     {
 
+        Debug.Log(idx + "");
         Instantiate(BGPref[idx], this.gameObject.transform );
 
     }
