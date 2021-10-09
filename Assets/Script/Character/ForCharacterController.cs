@@ -26,26 +26,27 @@ public class ForCharacterController : MonoBehaviour
     public bool ReadyJump = false;
 
 
-    float speed = 4.0f;
+    float speed = 13.0f;
     public CharacterController controller;
     bool timerStart = false;
     bool returnPos = false;
     float timer = 0f;
-    float time = 0.5f;          //Key
+    float time = 0.3f;          //Key
     bool jumpB = false;
-    float jumpF = 20f;
+    float jumpF = 18f;
     //Assign out controller
     void Start()
     {
         controller = GetComponent<CharacterController>();
         startPos = transform.position;
-        endPos = transform.position + new Vector3(10, 0, 0);
+        endPos = transform.position + new Vector3(60, 0, 0);
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
         ReadyJump = true;
+        Debug.Log("?>??????????????????");
     }
     void Update()
     {
@@ -123,7 +124,7 @@ public class ForCharacterController : MonoBehaviour
 
             }
         }
-        if (jumpB)
+        if (jumpB && transform.position.y < -13)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumpB = false;
