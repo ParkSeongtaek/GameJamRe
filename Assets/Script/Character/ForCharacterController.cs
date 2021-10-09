@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class ForCharacterController : MonoBehaviour
 {
+
+    public Animator anim;
+
     Vector3 moveVector;
     Vector3 move;
     Vector3 startPos = new Vector3();
@@ -40,6 +43,8 @@ public class ForCharacterController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         startPos = transform.position;
         endPos = transform.position + new Vector3(60, 0, 0);
+
+        anim = GetComponent<Animator>();
     }
 
 
@@ -50,7 +55,6 @@ public class ForCharacterController : MonoBehaviour
     }
     void Update()
     {
-
 
 
         if (timerStart)
@@ -119,6 +123,9 @@ public class ForCharacterController : MonoBehaviour
                 if (timer < time)
                 {
                     jumpB = true;
+                    anim.SetInteger("playerWalk",0);
+                    anim.SetInteger("playerJump",1);
+
                 }
                 timerStart = false;
                 timer = 0f;
@@ -126,6 +133,13 @@ public class ForCharacterController : MonoBehaviour
 
             }
         }
+
+        //캐릭터 y값이 0보다 작을 때(지면에 닿을 때) playerWalk 파라미터를 1로 바꿈
+        if(this.gameObject.transform.localPosition.y<=0)
+        {
+            anim.SetInteger("playerWalk",1);
+        }
+
         if (jumpB && transform.position.y < -13)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -136,7 +150,7 @@ public class ForCharacterController : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-
+        
     }
 
 }
