@@ -14,10 +14,15 @@ public class BGMove : MonoBehaviour
      
     }
 
+    public void Acceleraion(float addspeed) 
+    {
+        this.speed += addspeed;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(-speed * Time.deltaTime, 0, 0);
+        transform.Translate(-this.speed * Time.deltaTime, 0, 0);
         timer += Time.deltaTime;
         if(timer > time)
         {
