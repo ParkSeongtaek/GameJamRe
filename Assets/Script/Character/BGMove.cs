@@ -22,12 +22,24 @@ public class BGMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(-this.speed * Time.deltaTime, 0, 0);
-        timer += Time.deltaTime;
+        if (GameManager.Instance.inGame)
+            transform.Translate(-this.speed * Time.deltaTime, 0, 0);
+        else if(GameManager.Instance.gameClear)
+        {
+            if (speed > 0)
+            {
+                this.speed -= 0.1f;
+            }
+            transform.Translate(-this.speed * Time.deltaTime, 0, 0);
+
+        }
+        /*
+         timer += Time.deltaTime;
         if(timer > time)
         {
             Destroy(this.gameObject);
         }
+        */
 
     }
 

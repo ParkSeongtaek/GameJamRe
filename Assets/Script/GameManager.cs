@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public bool inGame = true;
     public bool pause = false;
     public bool gameOver = false;
+    public bool gameClear = false;
+
     public int Stage = 1;
 
 
