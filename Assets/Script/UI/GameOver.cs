@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("닿았당");  
-        if(col.name=="Enemy")
+        if(col.name=="Enemy" || col.name == "Enemy1" || col.name == "Enemy2" || col.name == "Enemy3")
         {
             Gameover();
         }
