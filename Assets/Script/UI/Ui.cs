@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ui : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Ui : MonoBehaviour
     }
     public void Re()
     {
-
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Park");
     }
+   
 }

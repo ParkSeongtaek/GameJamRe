@@ -21,11 +21,11 @@ public class ForCharacterController : MonoBehaviour
     public LayerMask groundMask;
     public float groundDistance = 0.4f;
     public bool isGrounded = true;
-    public float jumpHeight = 20f; // JH: 4f->.7f
+    public float jumpHeight = 200f; // JH: 4f->.7f
 
     public float yVelocity = 0;
-    public float gravity = -20;
-    public float jumpPower = 5f;
+    public float gravity = -30;
+    public float jumpPower = 10f;
     public bool ReadyJump = false;
 
 
@@ -45,14 +45,11 @@ public class ForCharacterController : MonoBehaviour
         endPos = transform.position + new Vector3(60, 0, 0);
 
         anim = GetComponent<Animator>();
+        anim.SetInteger("playerWalk", 1);
     }
 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        ReadyJump = true;
-        Debug.Log("?>??????????????????");
-    }
+   
     void Update()
     {
 
@@ -142,11 +139,11 @@ public class ForCharacterController : MonoBehaviour
 
         if (jumpB && transform.position.y < -13)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocity.y = 2f * Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumpB = false;
         }
 
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += 3f * gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 

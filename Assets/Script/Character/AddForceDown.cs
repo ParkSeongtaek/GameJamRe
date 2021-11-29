@@ -10,9 +10,17 @@ public class AddForceDown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        
+        this.rb = this.gameObject.GetComponent<Rigidbody>();
+        this.rb.useGravity = false;
+    }
+    public void useGravity()
+    {
+        this.rb.useGravity = true;
+        this.rb.AddForce(-transform.up * force);
+
     }
 
-   
+
+
+
 }

@@ -6,30 +6,35 @@ public class GameOver : MonoBehaviour
 {
     public static GameOver Instance;
 
+    GameObject GameOverUI;
+
     private void Start()
     {
         Instance = this;
+        GameOverUI = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
+
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter(Collision col)
     {
-        Debug.Log("닿았당");  
-        if(col.name=="Enemy" || col.name == "Enemy1" || col.name == "Enemy2" || col.name == "Enemy3")
-        {
+        if (col.gameObject.tag == "GameController") { 
             Gameover();
         }
     }
+    
 
 
-    //class OBJ{  OnSollisionEnter ( Collision = Char)   // Gameover. -> Gameover  }
-    class Object
-    {
-
-    }
+   
 
     public void Gameover()
     {
-        Debug.Log("GAmeover");
+        if (GameManager.Instance.inGame)
+        {
+            GameOverUI.SetActive(true);
+            GameOverUI.GetComponent<GameOverUI>().SqnStart();
+            GameManager.Instance.inGame = false;
+            GameManager.Instance.gameOver = true;
+        }
     }
 
 }

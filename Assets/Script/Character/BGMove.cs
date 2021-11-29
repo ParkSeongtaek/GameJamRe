@@ -33,13 +33,7 @@ public class BGMove : MonoBehaviour
             transform.Translate(-this.speed * Time.deltaTime, 0, 0);
 
         }
-        /*
-         timer += Time.deltaTime;
-        if(timer > time)
-        {
-            Destroy(this.gameObject);
-        }
-        */
+       
 
     }
 
